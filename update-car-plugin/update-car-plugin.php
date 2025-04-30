@@ -85,13 +85,22 @@ function ucp_render_car_images_meta_box($post) {
         <div class="gallery-images">
             <label><?php _e('Gallery Images', 'update-car-plugin'); ?></label>
             <div id="gallery-container">
-                <?php if($gallery_images): foreach($gallery_images as $image_id): ?>
+                <?php 
+                if($gallery_images && is_array($gallery_images)): 
+                    foreach($gallery_images as $image_id): 
+                        $image = wp_get_attachment_image_src($image_id, 'thumbnail');
+                        if($image):
+                ?>
                     <div class="gallery-image">
-                        <?php echo wp_get_attachment_image($image_id, 'thumbnail'); ?>
-                        <button class="remove-image">×</button>
-                        <input type="hidden" name="gallery_images[]" value="<?php echo $image_id; ?>">
+                        <img src="<?php echo esc_url($image[0]); ?>" alt="">
+                        <button type="button" class="remove-image" title="Remove image">×</button>
+                        <input type="hidden" name="gallery_images[]" value="<?php echo esc_attr($image_id); ?>">
                     </div>
-                <?php endforeach; endif; ?>
+                <?php 
+                        endif;
+                    endforeach; 
+                endif; 
+                ?>
             </div>
             <button type="button" class="button" id="add-gallery-images">
                 <?php _e('Add Gallery Images', 'update-car-plugin'); ?>
@@ -217,9 +226,10 @@ function ucp_enqueue_admin_scripts($hook) {
     if ('update_car' !== $post_type) return;
     
     wp_enqueue_media();
+    wp_enqueue_script('jquery-ui-sortable');
     wp_enqueue_script('ucp-admin-script', 
         plugins_url('js/admin.js', __FILE__), 
-        array('jquery'), 
+        array('jquery', 'jquery-ui-sortable'), 
         '1.0.0', 
         true
     );
