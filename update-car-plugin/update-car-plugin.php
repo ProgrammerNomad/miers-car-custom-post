@@ -91,10 +91,10 @@ function ucp_render_car_images_meta_box($post) {
                         $image = wp_get_attachment_image_src($image_id, 'thumbnail');
                         if($image):
                 ?>
-                    <div class="gallery-image">
+                    <div class="gallery-image" data-id="<?php echo esc_attr($image_id); ?>">
                         <img src="<?php echo esc_url($image[0]); ?>" alt="">
-                        <button type="button" class="remove-image" title="Remove image">×</button>
                         <input type="hidden" name="gallery_images[]" value="<?php echo esc_attr($image_id); ?>">
+                        <button type="button" class="remove-image" title="<?php esc_attr_e('Remove image', 'update-car-plugin'); ?>">×</button>
                     </div>
                 <?php 
                         endif;

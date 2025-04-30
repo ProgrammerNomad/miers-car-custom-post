@@ -35,7 +35,7 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 3px;
-    cursor: move;
+    overflow: hidden;
 }
 
 .gallery-image img {
@@ -46,23 +46,24 @@
 
 .gallery-image .remove-image {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: 5px;
+    right: 5px;
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #dc3545;
+    background: rgba(220, 53, 69, 0.9);
     color: #fff;
-    border: 2px solid #fff;
-    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    border: none;
     cursor: pointer;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 1;
     padding: 0;
+    transition: all 0.2s ease;
 }
 
 .gallery-image .remove-image:hover {
-    background: #c82333;
+    background: rgba(220, 53, 69, 1);
+    transform: scale(1.1);
 }
 
 .gallery-image-placeholder {
