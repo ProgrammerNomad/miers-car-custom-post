@@ -1,0 +1,56 @@
+.car-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
+
+.field-group {
+    margin-bottom: 15px;
+}
+
+.field-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.field-group input[type="text"],
+.field-group input[type="number"] {
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.gallery-images {
+    margin: 15px 0;
+}
+
+.gallery-image {
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+}
+
+.gallery-image img {
+    max-width: 150px;
+    height: auto;
+}
+
+.remove-image {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 0 6px;
+    cursor: pointer;
+}
+
+.car-content-section .content-field {
+    margin-bottom: 20px;
+}
